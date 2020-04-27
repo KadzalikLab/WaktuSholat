@@ -69,7 +69,7 @@ public class WaktuSholat_Tinggi {
 
         int jdzuhur=(int)dzuhur;
         double qdzuhur= (dzuhur%1)*60;
-        double ndzuhur=(qdzuhur%1)*60;
+        double ndzuhur=Math.round((qdzuhur%1)*60);
 
         //ashar (ha=hour angle)
         //sebenarnya rumus sudutwaktu_a4 cuma 1 baris tapi karna terlalu panjang dipisahlah jadi 1,2,3
@@ -96,7 +96,7 @@ public class WaktuSholat_Tinggi {
 
         int jashar=(int)ashar;
         double qashar= (ashar-jashar)*60;
-        double nashar=(qashar%1)*60;
+        double nashar=Math.round((qashar%1)*60);
 
 
         //maghrib
@@ -117,7 +117,7 @@ public class WaktuSholat_Tinggi {
         double maghrib=(12+timezone-bujur/15-EoT_m/60+sudutwaktu_m/15)+ihtiyat;
         int jmaghrib=(int)maghrib;
         double qmaghrib= (maghrib%1)*60;
-        double nmaghrib=(qmaghrib%1)*60;
+        double nmaghrib=Math.round((qmaghrib%1)*60);
 
         //isya
         double ha_isya=Math.toDegrees(Math.acos((Math.sin(sudutisya_r)-Math.sin(lintang_r)*Math.sin(deklinasijam12_r))/(Math.cos(lintang_r)*Math.cos(deklinasijam12_r))));
@@ -134,7 +134,7 @@ public class WaktuSholat_Tinggi {
 
         int jisya=(int)isya;
         double qisya= (isya%1)*60;
-        double nisya=(qisya%1)*60;
+        double nisya=Math.round((qisya%1)*60);
 
 
         //shubuh
@@ -152,14 +152,14 @@ public class WaktuSholat_Tinggi {
 
         int jsubuh=(int)subuh;
         double qsubuh= (subuh%1)*60;
-        double nsubuh=(qsubuh%1)*60;
+        double nsubuh=Math.round((qsubuh%1)*60);
 
 
         //imsak 10 menit
         double imsak=subuh-0.166666666;
         int jimsak=(int)imsak;
         double qimsak= (imsak%1)*60;
-        double nimsak=(qimsak%1)*60;
+        double nimsak=Math.round((qimsak%1)*60);
 
         //terbit
         double perkiraan_terbit=Math.toDegrees(Math.acos((Math.sin(Math.toRadians(-0.8333-0.0347*Math.sqrt(tinggilokasi)))-Math.sin(Math.toRadians(deklinasijam12))*Math.sin(Math.toRadians(lintang)))/(Math.cos(Math.toRadians(deklinasijam12))*Math.cos(Math.toRadians(lintang)))));
@@ -176,7 +176,7 @@ public class WaktuSholat_Tinggi {
 
         int jterbit=(int)terbit;
         double qterbit= (terbit%1)*60;
-        double nterbit=(qterbit%1)*60;
+        double nterbit=Math.round((qterbit%1)*60);
 
         System.out.println("julian day    = " + JD);
         System.out.println("JDL           = " + JDL);
