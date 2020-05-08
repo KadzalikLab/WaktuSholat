@@ -8,7 +8,8 @@ public class WaktuSholat_Tinggi {
         double tanggal=12;
         double bulan=6;
         double tahun =2009;
-
+        
+        //ubah nilai lintang disini
         double lintang_derajat=-6;
         double lintang_menit = 10;
         double lintang_detik= 0;
@@ -23,13 +24,16 @@ public class WaktuSholat_Tinggi {
         double sudutisya=-18;
         double ihtiyat=0;
 
-        //PERINGATAN!!!!
+        
         //Bila nilai lintang/bujur yang dikehendaki positif maka kode lintang dibawah menjadi ditambah...bukan dikurang
         //Postif   = lintang_derajat+(lintang_menit/60)+(lintang_detik/3600)
         //Negative = lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
 
         //ubah ke nilai desimal
-        double lintang= lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
+        double lintang=0;
+        if (lintang<0)lintang= lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
+        else lintang= lintang_derajat+(lintang_menit/60)+(lintang_detik/3600);
+        
         double bujur= bujur_derajat+(bujur_menit/60)+(bujur_detik/3600) ;
 
         //mengubah ke nilai radian
