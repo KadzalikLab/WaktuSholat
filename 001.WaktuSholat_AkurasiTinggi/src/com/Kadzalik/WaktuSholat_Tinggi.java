@@ -34,8 +34,10 @@ public class WaktuSholat_Tinggi {
         if (lintang<0)lintang= lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
         else lintang= lintang_derajat+(lintang_menit/60)+(lintang_detik/3600);
         
-        double bujur= bujur_derajat+(bujur_menit/60)+(bujur_detik/3600) ;
-
+        double bujur=0;
+        if (bujur<0)bujur= bujur_derajat-(bujur_menit/60)-(bujur_detik/3600) ;
+        else bujur= bujur_derajat+(bujur_menit/60)+(bujur_detik/3600) ;
+        
         //mengubah ke nilai radian
         double lintang_r = Math.toRadians(lintang);
         double sudutsubuh_r = Math.toRadians(sudutsubuh);
