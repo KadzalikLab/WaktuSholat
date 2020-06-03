@@ -22,7 +22,7 @@ public class WaktuSholat_Tinggi {
         double tinggilokasi= 50 ;
         double sudutsubuh= -20;
         double sudutisya=-18;
-        double ihtiyat=0;
+        double ihtiyat=0.03333333333;
 
         
         //Bila nilai lintang/bujur yang dikehendaki positif maka kode lintang dibawah menjadi ditambah...bukan dikurang
