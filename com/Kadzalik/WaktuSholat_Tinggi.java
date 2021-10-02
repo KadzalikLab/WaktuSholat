@@ -1,6 +1,5 @@
 package com.Kadzalik;
 import java.util.Scanner;
-
 public class WaktuSholat_Tinggi {
 
     public static void main(String[] args) {
@@ -9,37 +8,28 @@ public class WaktuSholat_Tinggi {
         
         Scanner isiandata = new Scanner(System.in);
         
-        System.out.print("Isi tanggal :");
-        double tanggal=isiandata.nextDouble();
+        System.out.print("Isi tanggal (dd-mm-yyyy) :");
+        String waktu[]=isiandata.nextLine().split("-");
+        double tanggal=Double.parseDouble(waktu[0]);
+        double bulan=Double.parseDouble(waktu[1]);
+        double tahun=Double.parseDouble(waktu[2]);
 
-        System.out.print("Isi bulan :");
-        double bulan=isiandata.nextDouble();
+        System.out.print("Isi lintang (dd'mm'ss) :");
+        String lintangtempat[]=isiandata.nextLine().split("'");
+        double lintang_derajat=Double.parseDouble(lintangtempat[0]);
+        double lintang_menit=Double.parseDouble(lintangtempat[1]);
+        double lintang_detik=Double.parseDouble(lintangtempat[2]);
 
-        System.out.print("Isi tahun :");
-        double tahun=isiandata.nextDouble();
-
-        System.out.print("Isi derajat lintang :");
-        double lintang_derajat=isiandata.nextDouble();
-
-        System.out.print("Isi menit lintang :");
-        double lintang_menit=isiandata.nextDouble();
-
-        System.out.print("Isi detik lintang :");
-        double lintang_detik=isiandata.nextDouble();
-
-        System.out.print("Isi derajat bujur :");
-        double bujur_derajat=isiandata.nextDouble();
-
-        System.out.print("Isi menit bujur :");
-        double bujur_menit=isiandata.nextDouble();
-
-        System.out.print("Isi detik bujur :");
-        double bujur_detik=isiandata.nextDouble();
+        System.out.print("Isi bujur (ddd'mm'ss) :");
+        String bujurtempat[]=isiandata.nextLine().split("'");
+        double bujur_derajat=Double.parseDouble(bujurtempat[0]);
+        double bujur_menit=Double.parseDouble(bujurtempat[1]);
+        double bujur_detik=Double.parseDouble(bujurtempat[2]);
 
         isiandata.close();
 
         System.out.print(System.lineSeparator());
-        System.out.println("Hasil :");
+        System.out.println("HASIL :");
 
         double timezone= 7 ;
         double tinggilokasi= 50 ;
@@ -280,6 +270,7 @@ public class WaktuSholat_Tinggi {
         System.out.println("terbit           = " + (terbit));
         System.out.print(System.lineSeparator());
 
+        System.out.println("HASIL AKHIR:");
         System.out.println("imsak   = " + (jimsak) + ":"+ ((int)qimsak)+ ":"+ ((int)nimsak));
         System.out.print(System.lineSeparator());
         System.out.println("subuh   = " + (jsubuh) + ":"+ ((int)qsubuh)+ ":"+ ((int)nsubuh));
