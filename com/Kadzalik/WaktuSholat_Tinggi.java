@@ -1,21 +1,45 @@
 package com.Kadzalik;
+import java.util.Scanner;
 
 public class WaktuSholat_Tinggi {
 
     public static void main(String[] args) {
 
-        //data - data yang dibutuhkan
-        double tanggal=12;
-        double bulan=6;
-        double tahun =2009;
+        //menginputkan data - data yang dibutuhkan
+        
+        Scanner isiandata = new Scanner(System.in);
+        
+        System.out.print("Isi tanggal :");
+        double tanggal=isiandata.nextDouble();
 
-        double lintang_derajat=-6;
-        double lintang_menit = 10;
-        double lintang_detik= 0;
+        System.out.print("Isi bulan :");
+        double bulan=isiandata.nextDouble();
 
-        double bujur_derajat=106;
-        double bujur_menit=51;
-        double bujur_detik=0;
+        System.out.print("Isi tahun :");
+        double tahun=isiandata.nextDouble();
+
+        System.out.print("Isi derajat lintang :");
+        double lintang_derajat=isiandata.nextDouble();
+
+        System.out.print("Isi menit lintang :");
+        double lintang_menit=isiandata.nextDouble();
+
+        System.out.print("Isi detik lintang :");
+        double lintang_detik=isiandata.nextDouble();
+
+        System.out.print("Isi derajat bujur :");
+        double bujur_derajat=isiandata.nextDouble();
+
+        System.out.print("Isi menit bujur :");
+        double bujur_menit=isiandata.nextDouble();
+
+        System.out.print("Isi detik bujur :");
+        double bujur_detik=isiandata.nextDouble();
+
+        isiandata.close();
+
+        System.out.print(System.lineSeparator());
+        System.out.println("Hasil :");
 
         double timezone= 7 ;
         double tinggilokasi= 50 ;
