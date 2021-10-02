@@ -1,43 +1,51 @@
 package com.Kadzalik;
-
+import java.util.Scanner;
 public class WaktuSholat_Tinggi {
 
     public static void main(String[] args) {
 
-        //data - data yang dibutuhkan
-        double tanggal=12;
-        double bulan=6;
-        double tahun =2009;
+        //menginputkan data - data yang dibutuhkan
         
-        //ubah nilai lintang disini
-        double lintang_derajat=-6;
-        double lintang_menit = 10;
-        double lintang_detik= 0;
+        Scanner isiandata = new Scanner(System.in);
+        
+        System.out.print("Isi tanggal (dd-mm-yyyy) :");
+        String waktu[]=isiandata.nextLine().split("-");
+        double tanggal=Double.parseDouble(waktu[0]);
+        double bulan=Double.parseDouble(waktu[1]);
+        double tahun=Double.parseDouble(waktu[2]);
 
-        double bujur_derajat=106;
-        double bujur_menit=51;
-        double bujur_detik=0;
+        System.out.print("Isi lintang (dd'mm'ss) :");
+        String lintangtempat[]=isiandata.nextLine().split("'");
+        double lintang_derajat=Double.parseDouble(lintangtempat[0]);
+        double lintang_menit=Double.parseDouble(lintangtempat[1]);
+        double lintang_detik=Double.parseDouble(lintangtempat[2]);
+
+        System.out.print("Isi bujur (ddd'mm'ss) :");
+        String bujurtempat[]=isiandata.nextLine().split("'");
+        double bujur_derajat=Double.parseDouble(bujurtempat[0]);
+        double bujur_menit=Double.parseDouble(bujurtempat[1]);
+        double bujur_detik=Double.parseDouble(bujurtempat[2]);
+
+        isiandata.close();
+
+        System.out.print(System.lineSeparator());
+        System.out.println("HASIL :");
 
         double timezone= 7 ;
         double tinggilokasi= 50 ;
         double sudutsubuh= -20;
         double sudutisya=-18;
-        double ihtiyat=0.03333333333;
+        double ihtiyat=0;
 
-        
+        //PERINGATAN!!!!
         //Bila nilai lintang/bujur yang dikehendaki positif maka kode lintang dibawah menjadi ditambah...bukan dikurang
         //Postif   = lintang_derajat+(lintang_menit/60)+(lintang_detik/3600)
         //Negative = lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
 
         //ubah ke nilai desimal
-        double lintang=0;
-        if (lintang<0)lintang= lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
-        else lintang= lintang_derajat+(lintang_menit/60)+(lintang_detik/3600);
-        
-        double bujur=0;
-        if (bujur<0)bujur= bujur_derajat-(bujur_menit/60)-(bujur_detik/3600) ;
-        else bujur= bujur_derajat+(bujur_menit/60)+(bujur_detik/3600) ;
-        
+        double lintang= lintang_derajat-(lintang_menit/60)-(lintang_detik/3600);
+        double bujur= bujur_derajat+(bujur_menit/60)+(bujur_detik/3600) ;
+
         //mengubah ke nilai radian
         double lintang_r = Math.toRadians(lintang);
         double sudutsubuh_r = Math.toRadians(sudutsubuh);
@@ -75,7 +83,7 @@ public class WaktuSholat_Tinggi {
 
         int jdzuhur=(int)dzuhur;
         double qdzuhur= (dzuhur%1)*60;
-        double ndzuhur=Math.round((qdzuhur%1)*60);
+        double ndzuhur=(qdzuhur%1)*60;
 
         //ashar (ha=hour angle)
         //sebenarnya rumus sudutwaktu_a4 cuma 1 baris tapi karna terlalu panjang dipisahlah jadi 1,2,3
@@ -102,7 +110,7 @@ public class WaktuSholat_Tinggi {
 
         int jashar=(int)ashar;
         double qashar= (ashar-jashar)*60;
-        double nashar=Math.round((qashar%1)*60);
+        double nashar=(qashar%1)*60;
 
 
         //maghrib
@@ -123,7 +131,7 @@ public class WaktuSholat_Tinggi {
         double maghrib=(12+timezone-bujur/15-EoT_m/60+sudutwaktu_m/15)+ihtiyat;
         int jmaghrib=(int)maghrib;
         double qmaghrib= (maghrib%1)*60;
-        double nmaghrib=Math.round((qmaghrib%1)*60);
+        double nmaghrib=(qmaghrib%1)*60;
 
         //isya
         double ha_isya=Math.toDegrees(Math.acos((Math.sin(sudutisya_r)-Math.sin(lintang_r)*Math.sin(deklinasijam12_r))/(Math.cos(lintang_r)*Math.cos(deklinasijam12_r))));
@@ -140,7 +148,7 @@ public class WaktuSholat_Tinggi {
 
         int jisya=(int)isya;
         double qisya= (isya%1)*60;
-        double nisya=Math.round((qisya%1)*60);
+        double nisya=(qisya%1)*60;
 
 
         //shubuh
@@ -158,14 +166,14 @@ public class WaktuSholat_Tinggi {
 
         int jsubuh=(int)subuh;
         double qsubuh= (subuh%1)*60;
-        double nsubuh=Math.round((qsubuh%1)*60);
+        double nsubuh=(qsubuh%1)*60;
 
 
         //imsak 10 menit
         double imsak=subuh-0.166666666;
         int jimsak=(int)imsak;
         double qimsak= (imsak%1)*60;
-        double nimsak=Math.round((qimsak%1)*60);
+        double nimsak=(qimsak%1)*60;
 
         //terbit
         double perkiraan_terbit=Math.toDegrees(Math.acos((Math.sin(Math.toRadians(-0.8333-0.0347*Math.sqrt(tinggilokasi)))-Math.sin(Math.toRadians(deklinasijam12))*Math.sin(Math.toRadians(lintang)))/(Math.cos(Math.toRadians(deklinasijam12))*Math.cos(Math.toRadians(lintang)))));
@@ -182,7 +190,7 @@ public class WaktuSholat_Tinggi {
 
         int jterbit=(int)terbit;
         double qterbit= (terbit%1)*60;
-        double nterbit=Math.round((qterbit%1)*60);
+        double nterbit=(qterbit%1)*60;
 
         System.out.println("julian day    = " + JD);
         System.out.println("JDL           = " + JDL);
@@ -262,6 +270,7 @@ public class WaktuSholat_Tinggi {
         System.out.println("terbit           = " + (terbit));
         System.out.print(System.lineSeparator());
 
+        System.out.println("HASIL AKHIR:");
         System.out.println("imsak   = " + (jimsak) + ":"+ ((int)qimsak)+ ":"+ ((int)nimsak));
         System.out.print(System.lineSeparator());
         System.out.println("subuh   = " + (jsubuh) + ":"+ ((int)qsubuh)+ ":"+ ((int)nsubuh));
